@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+
+  auto_encoder_model_server:
+    container_name: auto_encoder_model_server
+    restart: always
+    build: .
+    ports:
+      - "9000:9000"
+    environment:
+    - PYTHONUNBUFFERED=1
