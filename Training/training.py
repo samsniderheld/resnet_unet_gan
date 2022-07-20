@@ -31,6 +31,9 @@ def pre_train_unet(args):
     img_path = args.save_img_path
     model_path = args.gen_pre_train_model_path_frozen
 
+    img_path = os.path.join(args.base_results_dir,args.save_img_path)
+    model_path = os.path.join(args.base_results_dir, args.saved_model_dir,args.gen_pre_train_model_path_frozen)
+
     print("train decoder")
 
     for i in range(args.gen_pre_train_epochs):
@@ -48,8 +51,7 @@ def pre_train_unet(args):
 
         generator.save_weights(model_path)
 
-    img_path = args.save_img_path
-    model_path = args.gen_pre_train_model_path_unfrozen
+    model_path = os.path.join(args.base_results_dir, args.saved_model_dir,args.gen_pre_train_model_path_unfrozen)
 
     generator.trainable = True
     generator.summary()
