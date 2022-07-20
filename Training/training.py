@@ -2,6 +2,7 @@
 File that defines the main training loops.
 Called from the main file image_2_image.py
 """
+import os
 import tensorflow as tf
 from tensorflow.keras.losses import MeanSquaredError
 
@@ -28,8 +29,6 @@ def pre_train_unet(args):
 
     generator.compile(optimizer="adam", loss=MeanSquaredError())
 
-    img_path = args.save_img_path
-    model_path = args.gen_pre_train_model_path_frozen
 
     img_path = os.path.join(args.base_results_dir,args.save_img_path)
     model_path = os.path.join(args.base_results_dir, args.saved_model_dir,args.gen_pre_train_model_path_frozen)
